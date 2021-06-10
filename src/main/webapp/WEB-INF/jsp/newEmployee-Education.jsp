@@ -316,7 +316,7 @@
                         </a>
                     </li>            
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">${sessionScope.username}<b class="fa fa-angle-down"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">${pageContext["request"].userPrincipal.principal.username}<b class="fa fa-angle-down"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="editprofile"><i class="fa fa-fw fa-user"></i> Edit Profile</a></li>
                             <li><a href="changepassword"><i class="fa fa-fw fa-cog"></i> Change Password</a></li>
@@ -373,7 +373,7 @@
 
                     
                     
-                    <form:form class="well form-horizontal" method="POST" modelAttribute="newUser" action="newUser"  id="contact_form">
+                    <form:form class="well form-horizontal" method="POST" modelAttribute="newEducation" action="newEducation"  id="contact_form">
                     <!-- Text input-->
                     
                     <!-- Form Name -->
@@ -385,18 +385,18 @@
                       <div class="col-md-4 inputGroupContainer">
                       <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                      <input id="title" name="title" placeholder="Title" class="form-control"  type="text"/>
+                      <input id="title" name="education.title" path="education.title" placeholder="Title" class="form-control"  type="text"/>
                         </div>
                       </div>
                     </div>
                     
                     
                     <div class="form-group">
-                      <label class="col-md-4 control-label">Level</label>  
+                      <label class="col-md-4 control-label">Standard</label>  
                       <div class="col-md-4 inputGroupContainer">
                       <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                      <input id="levels" name="levels" placeholder="Level" class="form-control"  type="text"/>
+                      <input id="standard" name="education.standard" path="education.standard" placeholder="Standard" class="form-control"  type="text"/>
                         </div>
                       </div>
                     </div>
@@ -407,7 +407,7 @@
                       <div class="col-md-4 inputGroupContainer">
                       <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                      <input id="institution" name="institution" placeholder="Institution" class="form-control" type="text"/>
+                      <input id="institution" name="education.institution" path="education.institution" placeholder="Institution" class="form-control" type="text"/>
                         </div>
                       </div>
                     </div>
@@ -418,7 +418,17 @@
                       <div class="col-md-4 inputGroupContainer">
                       <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-file"></i></span>
-                      <input id="docFile" name="docFile" placeholder="Document File" class="form-control" type="file"/>
+                      <input id="docFile" name="education.docFile" path="education.docFile" placeholder="Document File" class="form-control" type="file"/>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="form-group">
+                      <label class="col-md-4 control-label">Add another Education Detail?</label>  
+                      <div class="col-md-4 inputGroupContainer">
+                      <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                      <input id="addAnotherEducation" name="addAnotherEducation" path="addAnotherEducation" class="form-control" type="checkBox"/>
                         </div>
                       </div>
                     </div>
@@ -428,7 +438,9 @@
                     <div class="form-group">
                       <label class="col-md-4 control-label"></label>
                       <div class="col-md-4"><br>
-                        <a class="btn btn-lg btn btn btn-warning btn-forget_password btn-block btn-color-orange" href="newEmployee-FamilyDetail"><span class="text">Next <span class="glyphicon glyphicon-send"></span></span></a>
+                        <center><span>
+                            <button class = "btn btn-success" type="submit" value="Next">NEXT</button>
+                        </span></center>
                       </div>
                     </div>
                     </form:form>

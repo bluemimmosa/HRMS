@@ -267,7 +267,7 @@
                         </a>
                     </li>            
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">${sessionScope.username}<b class="fa fa-angle-down"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">${pageContext["request"].userPrincipal.principal.username}<b class="fa fa-angle-down"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="editprofile"><i class="fa fa-fw fa-user"></i> Edit Profile</a></li>
                             <li><a href="changepassword"><i class="fa fa-fw fa-cog"></i> Change Password</a></li>
@@ -347,7 +347,9 @@
                     <div class="form-group">
                       <label class="col-md-4 control-label"></label>
                       <div class="col-md-4"><br>
-                        <a class="btn btn-lg btn btn btn-warning btn-forget_password btn-block btn-color-orange" href="newEmployee-Health"><span class="text">Next <span class="glyphicon glyphicon-send"></span></span></a>
+                        <center><span>
+                            <button class = "btn btn-success" type="submit" value="Next">NEXT</button>
+                        </span></center>
                       </div>
                     </div>
                     </form:form>

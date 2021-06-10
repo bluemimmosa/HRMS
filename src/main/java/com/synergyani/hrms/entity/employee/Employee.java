@@ -104,4 +104,6 @@ public class Employee implements Serializable{
     @OneToMany(targetEntity = Education.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name="education_fk", referencedColumnName="empId")
     List<Education> educationdetails;
+    
+    
 }

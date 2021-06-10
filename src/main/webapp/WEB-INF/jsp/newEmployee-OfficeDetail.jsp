@@ -18,7 +18,7 @@
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/srynergylogo.png">
 
         <!--Title Name-->
-        <title>Synergy Automation And Instrumentation : Delete User</title>
+        <title>Synergy Automation And Instrumentation : New Employee - Office Details</title>
         
         <!-- All styles -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -189,6 +189,8 @@
             #success_message{ display: none;}
             
             
+            
+            
         </style>
         
         <!--JavaScript code for this dashboard page-->
@@ -208,8 +210,7 @@
             });
             
             
-            
-            $(document).ready(function() {
+              $(document).ready(function() {
             $('#contact_form').bootstrapValidator({
                 // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
                 feedbackIcons: {
@@ -218,37 +219,65 @@
                     validating: 'glyphicon glyphicon-refresh'
                 },
                 fields: {
-                    username: {
+                    officeName: {
                         validators: {
                                 stringLength: {
                                 min: 2,
                             },
                                 notEmpty: {
-                                message: 'Please enter your Name'
+                                message: 'Please enter your Office Name'
                             }
                         }
                     },
+                    levels: {
+                        validators: {
+                                stringLength: {
+                                min: 2,
+                            },
+                                notEmpty: {
+                                message: 'Please select your Level'
+                            }
+                        }
+                    },
+                    position: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Please select your Position'
+                            }
+                        }
+                    },
+                    branch: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Please select your Branch'
+                            }
+                        }
+                    },
+                     department: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Please select Department'
+                            }
+                        }
+                    },
+                    joindate: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Please input Joined Date'
+                            }
+                        }
+                    },
+                    permadate: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Please Input permanet Joined date'
+                            }
+                        }
+                    },
+                    
                         }
                     }
                 })
-                .on('success.form.bv', function(e) {
-                    $('#success_message').slideDown({ opacity: "show" }, "slow") // Do something ...
-                        $('#contact_form').data('bootstrapValidator').resetForm();
-
-                    // Prevent form submission
-                    e.preventDefault();
-
-                    // Get the form instance
-                    var $form = $(e.target);
-
-                    // Get the BootstrapValidator instance
-                    var bv = $form.data('bootstrapValidator');
-
-                    // Use Ajax to submit form data
-                    $.post($form.attr('action'), $form.serialize(), function(result) {
-                        console.log(result);
-                    }, 'json');
-                });
         });
             
         </script>
@@ -356,57 +385,155 @@
                     <div class="row" id="main" >
                         <div class="col-sm-12 col-md-12 well" id="content">
                             <div class="row">
-                                <h2><b>Delete User</b></h2>
+                                <h2><b> </b></h2>
                             </div>
                             
-                            
-                            <div class="container">
+                    <div class="container">
 
                     <fieldset>
 
                     
                     
-                    <form:form class="well form-horizontal" method="POST" modelAttribute="deleteuser" action="deleteuser"  id="contact_form">
+                    <form:form class="well form-horizontal" method="POST" modelAttribute="newOfficeDetail" action="newOfficeDetail"  id="contact_form">
                     <!-- Text input-->
                     
                     <!-- Form Name -->
-                    <Form:legend><center><h2><b>Delete User Form</b></h2></center></Form:legend><br>
-                    <Form:legend><center><a href="#" data-placement="bottom" data-toggle="tooltip" data-original-title="New User"><i class="fa fa-5x far fa-user-circle"></i></a></center></Form:legend><br>
+                    <Form:legend><center><h2><b>Employee - Office Detail Form</b></h2></center></Form:legend><br>
+                    
                     
                     <div class="form-group">
-                      <label class="col-md-4 control-label">User Name</label>  
+                      <label class="col-md-4 control-label">Office Name</label>  
                       <div class="col-md-4 inputGroupContainer">
                       <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                      <input id="username" name="username" placeholder="User Name" class="form-control"  type="text"/>
+                      <input id="officeName" name="officeName" path="officeName" placeholder="Office Name" class="form-control" value="Synergy Automation And Instrumentation"  type="text"/>
                         </div>
                       </div>
                     </div>
-                                       
-                    <!-- Select Basic -->
+                    
+                    
+                    <div class="form-group"> 
+                      <label class="col-md-4 control-label">Level</label>
+                        <div class="col-md-4 selectContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                        <select name="level" path="level" class="form-control selectpicker">
+                          <option value="">Select your Level</option>
+                          <option>Chief Executive Officer (CEO)</option>
+                          <option>Chief Operating Officer COO</option>
+                          <option>President</option>
+                          <option>Director</option>
+                          <option>Managers</option>
+                          <option>Team Leaders</option>
+                          <option>Employees</option>
+                        </select>
+                      </div>
+                    </div>
+                    </div>
+                    
+                    <div class="form-group"> 
+                      <label class="col-md-4 control-label">Position</label>
+                        <div class="col-md-4 selectContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                        <select name="position" path="position" class="form-control selectpicker">
+                          <option value="">Select your Position</option>
+                          <option>Hardware Technician</option>
+                          <option>Help Desk Analyst and Help Desk Support</option>
+                          <option>Network Administrator/Engineer</option>
+                          <option>Business Analyst</option>
+                          <option>IT Project Manager</option>
+                          <option>Systems Engineering Manager</option>
+                          <option>IT Director, Vice President, CIO/CTO</option>
+                        </select>
+                      </div>
+                    </div>
+                    </div>
+                    
+                    <div class="form-group"> 
+                      <label class="col-md-4 control-label">Branch</label>
+                        <div class="col-md-4 selectContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                        <select name="branch" path="branch" class="form-control selectpicker">
+                          <option value="">Select your Branch</option>
+                          <option>Kathmandu Branch</option>
+                          <option>Kanchanpur Branch</option>
+                          <option>Sankhu Branch</option>
+                          <option>Satdobato Branch</option>
+                        </select>
+                      </div>
+                    </div>
+                    </div>
+                    
+                    
+                    <div class="form-group"> 
+                      <label class="col-md-4 control-label">Department</label>
+                        <div class="col-md-4 selectContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                        <select name="department" path="department" class="form-control selectpicker">
+                          <option value="">Select your Department</option>
+                          <option>Accounts and Finance</option>
+                          <option>HR</option>
+                          <option>Sales and marketing (Business development)</option>
+                          <option>Infrastructures</option>
+                          <option>Research and development</option>
+                          <option>Learning and development</option>
+                          <option>IT services</option>
+                          <option>Product development</option>
+                          <option>Admin department</option>
+                          <option>Security and transport</option>
+                        </select>
+                      </div>
+                    </div>
+                    </div>
+                    
+                    
+                    
+                    <div class="form-group">
+                      <label class="col-md-4 control-label">Joined Date</label>  
+                      <div class="col-md-4 inputGroupContainer">
+                      <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                      <input type="date" id="joinDate" name="joinDate" path="joinDate" value="2018-07-22" min="1018-01-01" max="2021-6-1">
+                      </div>
+                      </div>
+                    </div>
+                    
+                    <div class="form-group">
+                      <label class="col-md-4 control-label">Permanent Joined Date</label>  
+                      <div class="col-md-4 inputGroupContainer">
+                      <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                      <input type="date" id="permaDate" name="permaDate" path="permaDate" value="2018-07-22" min="1018-01-01" max="2021-6-1">
+                      </div>
+                      </div>
+                    </div>
 
-                     <!--Success message--> 
-                    <div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Success!.</div>
 
+                   
                     <!-- Button -->
                     <div class="form-group">
                       <label class="col-md-4 control-label"></label>
                       <div class="col-md-4"><br>
-                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                        <button type="submit" class="btn btn-warning" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  Delete <span class="glyphicon glyphicon-remove"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+                        <center><span>
+                            <button class = "btn btn-success" type="submit" value="Next">Finish</button>
+                        </span></center>
                       </div>
                     </div>
                     </form:form>
 
                     </fieldset>
                         </div><!-- /.container -->
-                        
+                           
+                            
                             
                         </div>
                     </div>
-                </div>    
                 </div>
-            </div>
-           
+            </div>     
+        </div>
+          
     </body>
 </html>

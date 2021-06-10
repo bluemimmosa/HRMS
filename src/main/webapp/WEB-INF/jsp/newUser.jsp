@@ -18,7 +18,7 @@
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/srynergylogo.png">
 
         <!--Title Name-->
-        <title>Synergy Automation And Instrumentation : Delete User</title>
+        <title>Synergy Automation And Instrumentation : New User</title>
         
         <!-- All styles -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -189,6 +189,8 @@
             #success_message{ display: none;}
             
             
+            
+            
         </style>
         
         <!--JavaScript code for this dashboard page-->
@@ -208,8 +210,7 @@
             });
             
             
-            
-            $(document).ready(function() {
+              $(document).ready(function() {
             $('#contact_form').bootstrapValidator({
                 // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
                 feedbackIcons: {
@@ -225,6 +226,33 @@
                             },
                                 notEmpty: {
                                 message: 'Please enter your Name'
+                            }
+                        }
+                    },
+                     user_password: {
+                        validators: {
+                             stringLength: {
+                                min: 8,
+                            },
+                            notEmpty: {
+                                message: 'Please enter your Password'
+                            }
+                        }
+                    },
+                                confirm_password: {
+                        validators: {
+                             stringLength: {
+                                min: 8,
+                            },
+                            notEmpty: {
+                                message: 'Please confirm your Password'
+                            }
+                        }
+                    },
+                    role: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Please select your Role'
                             }
                         }
                     },
@@ -356,21 +384,20 @@
                     <div class="row" id="main" >
                         <div class="col-sm-12 col-md-12 well" id="content">
                             <div class="row">
-                                <h2><b>Delete User</b></h2>
+                                <h2><b>Give Information To Create New User.</b></h2>
                             </div>
                             
-                            
-                            <div class="container">
+                    <div class="container">
 
                     <fieldset>
 
                     
                     
-                    <form:form class="well form-horizontal" method="POST" modelAttribute="deleteuser" action="deleteuser"  id="contact_form">
+                    <form:form class="well form-horizontal" method="POST" modelAttribute="newUser" action="newUser"  id="contact_form">
                     <!-- Text input-->
                     
                     <!-- Form Name -->
-                    <Form:legend><center><h2><b>Delete User Form</b></h2></center></Form:legend><br>
+                    <Form:legend><center><h2><b>New User Form</b></h2></center></Form:legend><br>
                     <Form:legend><center><a href="#" data-placement="bottom" data-toggle="tooltip" data-original-title="New User"><i class="fa fa-5x far fa-user-circle"></i></a></center></Form:legend><br>
                     
                     <div class="form-group">
@@ -378,11 +405,49 @@
                       <div class="col-md-4 inputGroupContainer">
                       <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                      <input id="username" name="username" placeholder="User Name" class="form-control"  type="text"/>
+                      <input id="username" name="user.userName" path="user.userName" placeholder="User Name" class="form-control"  type="text"/>
                         </div>
                       </div>
                     </div>
-                                       
+
+                    <div class="form-group"> 
+                      <label class="col-md-4 control-label">Role</label>
+                        <div class="col-md-4 selectContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                        <select name="role.name" path="role.name" class="form-control selectpicker">
+                          <option value="">Select your Role></option>
+                          <option>ADMIN</option>
+                          <option>USER</option>
+                        </select>
+                      </div>
+                    </div>
+                    </div>
+
+                    <!-- Text input-->
+
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" >Password</label> 
+                        <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                      <input id="user_password" name="user.password" path="user.password" placeholder="Password" class="form-control"  type="password">
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Text input-->
+
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" >Confirm Password</label> 
+                        <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                      <input name="confirm_password"  id="confirm_password"  placeholder="Confirm Password" class="form-control"  type="password">
+                        </div>
+                      </div>
+                    </div>
+
                     <!-- Select Basic -->
 
                      <!--Success message--> 
@@ -392,21 +457,21 @@
                     <div class="form-group">
                       <label class="col-md-4 control-label"></label>
                       <div class="col-md-4"><br>
-                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                        <button type="submit" class="btn btn-warning" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  Delete <span class="glyphicon glyphicon-remove"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="submit" class="btn btn-warning" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSUBMIT <span class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
                       </div>
                     </div>
                     </form:form>
 
                     </fieldset>
                         </div><!-- /.container -->
-                        
+                           
+                            
                             
                         </div>
                     </div>
-                </div>    
                 </div>
-            </div>
-           
+            </div>     
+        </div>
+          
     </body>
 </html>

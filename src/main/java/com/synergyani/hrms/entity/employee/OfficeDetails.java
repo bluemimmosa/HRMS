@@ -40,7 +40,7 @@ public class OfficeDetails implements Serializable{
     String position;
     String department;
     String branch;
-    LocalDate joinDate;
-    LocalDate permaDate;
+    Date joinDate;
+    Date permaDate;
     
 }

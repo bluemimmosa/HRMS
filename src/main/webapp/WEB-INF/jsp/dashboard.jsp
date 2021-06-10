@@ -3,6 +3,7 @@
 <!--This tag is used for using spring mvc form tags-->
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>  
 
+
 <!DOCTYPE html>
 <html lang ="en">
     <head>
@@ -258,7 +259,7 @@
                         </a>
                     </li>            
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">${sessionScope.username}<b class="fa fa-angle-down"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">${pageContext["request"].userPrincipal.principal.username}<b class="fa fa-angle-down"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="editprofile"><i class="fa fa-fw fa-user"></i> Edit Profile</a></li>
                             <li><a href="changepassword"><i class="fa fa-fw fa-cog"></i> Change Password</a></li>
@@ -305,7 +306,7 @@
                     
                     <div class="row" id="main" >
                         <div class="col-sm-12 col-md-12 well" id="content">
-                            <h1>Welcome ${sessionScope.username} !</h1>
+                            <h1>Welcome ${pageContext["request"].userPrincipal.principal.username} !</h1>
                             <h2>${message}</h2>
                         </div>
                     </div>

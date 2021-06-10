@@ -8,10 +8,13 @@ package com.synergyani.hrms.controller;
 import com.synergyani.hrms.entity.employee.Address;
 import com.synergyani.hrms.entity.employee.AddressVO;
 import com.synergyani.hrms.entity.employee.Contact;
+import com.synergyani.hrms.entity.employee.Education;
+import com.synergyani.hrms.entity.employee.EducationVO;
 import com.synergyani.hrms.entity.employee.Employee;
 import com.synergyani.hrms.entity.employee.FamilyDetail;
 import com.synergyani.hrms.entity.employee.Health;
 import com.synergyani.hrms.entity.employee.IdentityDocuments;
+import com.synergyani.hrms.entity.employee.OfficeDetails;
 import com.synergyani.hrms.service.EmployeeService;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +36,7 @@ public class EmployeeController {
     EmployeeService es;
     
     Employee emp;
+    List<Education> ed = new ArrayList<>();
     
     //Serve the new employee page.
     @GetMapping("/newEmployee-personalinfo")
@@ -100,9 +104,36 @@ public class EmployeeController {
         List<IdentityDocuments> idList = new ArrayList<>();
         idList.add(identityDocuments);
         emp.setIdDocs(idList);
+        //System.out.println(emp.toString());
+        ModelAndView mav = new ModelAndView("newEmployee-Education");
+        mav.addObject("newEducation", new EducationVO());
+        return mav;
+    }
+    
+    @PostMapping("/newEducation")
+    public ModelAndView processEducation(@ModelAttribute("newEducation") EducationVO education){
+        ed.add(education.getEducation());
+        
+        if(education.isAddAnotherEducation()){
+            ModelAndView mav = new ModelAndView("newEmployee-Education");
+            mav.addObject("newEducation", new EducationVO());
+            return mav;
+        }
+        
+        emp.setEducationdetails(ed);
+        
+        ModelAndView mav = new ModelAndView("newEmployee-OfficeDetail");
+        mav.addObject("newOfficeDetail", new OfficeDetails());
+        return mav;
+    }
+    
+    @PostMapping("/newOfficeDetail")
+    public ModelAndView processOfficeDetails(@ModelAttribute("newOfficeDetail") OfficeDetails officeDetail){
+        emp.setOd(officeDetail);
         System.out.println(emp.toString());
-        ModelAndView mav = new ModelAndView("newEmployee-IdentityDocuments");
-        mav.addObject("newIdentityDocuments", new IdentityDocuments());
+        es.addEmployee(emp);
+        ModelAndView mav = new ModelAndView("employees");
+        mav.addObject("empList", es.findAll());
         return mav;
     }
     
@@ -118,6 +149,13 @@ public class EmployeeController {
     public ModelAndView listAllEmployee(){
         ModelAndView mav = new ModelAndView("employees");
         mav.addObject("empList", es.findAll());
+        System.out.println("Hello this is test............................................................................");
+        for(Employee e: es.findAll()){
+            List<Education> ed = e.getEducationdetails();
+            for(Education edu : ed){
+                System.out.println(edu);
+            }
+        }
         return mav;
     }
     

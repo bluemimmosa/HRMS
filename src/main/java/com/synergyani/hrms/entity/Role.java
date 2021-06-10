@@ -6,11 +6,14 @@
 package com.synergyani.hrms.entity;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 /**
@@ -50,7 +53,12 @@ public class Role implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Role{" + "id=" + id + ", name=" + name + '}';
+    }
+
     
     
 }

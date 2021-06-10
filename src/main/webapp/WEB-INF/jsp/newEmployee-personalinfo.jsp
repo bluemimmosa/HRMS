@@ -18,7 +18,7 @@
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/srynergylogo.png">
 
         <!--Title Name-->
-        <title>Synergy Automation And Instrumentation : Delete User</title>
+        <title>Synergy Automation And Instrumentation : New Employee - Personal Information</title>
         
         <!-- All styles -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -189,6 +189,8 @@
             #success_message{ display: none;}
             
             
+            
+            
         </style>
         
         <!--JavaScript code for this dashboard page-->
@@ -208,8 +210,7 @@
             });
             
             
-            
-            $(document).ready(function() {
+              $(document).ready(function() {
             $('#contact_form').bootstrapValidator({
                 // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
                 feedbackIcons: {
@@ -218,7 +219,7 @@
                     validating: 'glyphicon glyphicon-refresh'
                 },
                 fields: {
-                    username: {
+                    employeename: {
                         validators: {
                                 stringLength: {
                                 min: 2,
@@ -228,27 +229,41 @@
                             }
                         }
                     },
+                    trip-start: {
+                        validators: {
+                                stringLength: {
+                                min: 2,
+                            },
+                                notEmpty: {
+                                message: 'Please enter your Date of birth'
+                            }
+                        }
+                    },
+                    gender: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Please select your Gender'
+                            }
+                        }
+                    },
+                    merital: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Please select your Merital Status'
+                            }
+                        }
+                    },
+                     photofile: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Please select file location'
+                            }
+                        }
+                    },
+                    
                         }
                     }
                 })
-                .on('success.form.bv', function(e) {
-                    $('#success_message').slideDown({ opacity: "show" }, "slow") // Do something ...
-                        $('#contact_form').data('bootstrapValidator').resetForm();
-
-                    // Prevent form submission
-                    e.preventDefault();
-
-                    // Get the form instance
-                    var $form = $(e.target);
-
-                    // Get the BootstrapValidator instance
-                    var bv = $form.data('bootstrapValidator');
-
-                    // Use Ajax to submit form data
-                    $.post($form.attr('action'), $form.serialize(), function(result) {
-                        console.log(result);
-                    }, 'json');
-                });
         });
             
         </script>
@@ -356,57 +371,114 @@
                     <div class="row" id="main" >
                         <div class="col-sm-12 col-md-12 well" id="content">
                             <div class="row">
-                                <h2><b>Delete User</b></h2>
+                                <h2><b> </b></h2>
                             </div>
                             
-                            
-                            <div class="container">
+                    <div class="container">
 
                     <fieldset>
 
                     
                     
-                    <form:form class="well form-horizontal" method="POST" modelAttribute="deleteuser" action="deleteuser"  id="contact_form">
+                    <form:form class="well form-horizontal" method="POST" modelAttribute="newEmployee" action="newEmployee"  id="contact_form">
                     <!-- Text input-->
                     
                     <!-- Form Name -->
-                    <Form:legend><center><h2><b>Delete User Form</b></h2></center></Form:legend><br>
+                    <Form:legend><center><h2><b>Employee - Personal Information Form</b></h2></center></Form:legend><br>
                     <Form:legend><center><a href="#" data-placement="bottom" data-toggle="tooltip" data-original-title="New User"><i class="fa fa-5x far fa-user-circle"></i></a></center></Form:legend><br>
                     
                     <div class="form-group">
-                      <label class="col-md-4 control-label">User Name</label>  
+                      <label class="col-md-4 control-label">Employee Name</label>  
                       <div class="col-md-4 inputGroupContainer">
                       <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                      <input id="username" name="username" placeholder="User Name" class="form-control"  type="text"/>
+                      <input id="name" name="name" path="name" placeholder="Employee Name" class="form-control"  type="text"/>
                         </div>
                       </div>
                     </div>
-                                       
-                    <!-- Select Basic -->
+                    
+                    <div class="form-group">
+                      <label class="col-md-4 control-label">Date of birth</label>  
+                      <div class="col-md-4 inputGroupContainer">
+                      <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                      <input type="date" id="start" path ="dob" name="dob" value="2018-07-22" min="1018-01-01" max="2021-6-1">
+                      </div>
+                      </div>
+                    </div>
 
-                     <!--Success message--> 
-                    <div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Success!.</div>
-
+                    <div class="form-group"> 
+                      <label class="col-md-4 control-label">Gender</label>
+                        <div class="col-md-4 selectContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                        <select name="gender" class="form-control selectpicker">
+                          <option value="">Select your Gender</option>
+                          <option>F</option>
+                          <option>M</option>
+                          <option>O</option>
+                        </select>
+                      </div>
+                    </div>
+                    </div>
+                    
+                    <div class="form-group"> 
+                      <label class="col-md-4 control-label">Marital</label>
+                        <div class="col-md-4 selectContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                        <select name="maritial" class="form-control selectpicker">
+                          <option value="">Select your Marital Status</option>
+                          <option>UN-MARRIED</option>
+                          <option>MARRIED</option>
+                        </select>
+                      </div>
+                    </div>
+                    </div>
+                    
+                    <div class="form-group">
+                      <label class="col-md-4 control-label">Nationality</label>  
+                      <div class="col-md-4 inputGroupContainer">
+                      <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                      <input id="nationality" name="nationality" path="nationality" placeholder="Nationality" class="form-control" value="Nepali"  type="text"/>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    
+                     <div class="form-group">
+                      <label class="col-md-4 control-label">Photo File</label>  
+                      <div class="col-md-4 inputGroupContainer">
+                      <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-file"></i></span>
+                      <input id="photofile" name="photofile" path="photoFile" placeholder="Photo File" class="form-control" type="file"/>
+                        </div>
+                      </div>
+                    </div>
+                    
+                   
                     <!-- Button -->
                     <div class="form-group">
                       <label class="col-md-4 control-label"></label>
                       <div class="col-md-4"><br>
-                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                        <button type="submit" class="btn btn-warning" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  Delete <span class="glyphicon glyphicon-remove"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+                          <span>
+                              <button class = "btn btn-success" type="submit" value="Next">NEXT</button>
+                          </span>
                       </div>
                     </div>
                     </form:form>
 
                     </fieldset>
                         </div><!-- /.container -->
-                        
+                           
+                            
                             
                         </div>
                     </div>
-                </div>    
                 </div>
-            </div>
-           
+            </div>     
+        </div>
+          
     </body>
 </html>
